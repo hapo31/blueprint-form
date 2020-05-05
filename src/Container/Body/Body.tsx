@@ -71,7 +71,7 @@ export default () => {
     });
     const json = await res.json();
 
-    console.log(json);
+    setList([]);
   };
 
   return (
@@ -90,18 +90,25 @@ export default () => {
           {list.length === 0 ? (
             <Spinner />
           ) : (
-            list.map((item) => (
-              <FormControlLabel
-                key={`${item.rare}${item.name} (${item.owner})`}
-                label={`${item.rare}${item.name} (${item.owner})`}
-                control={
-                  <Checkbox
-                    onChange={onClickItemCheckbox}
-                    name={`${item.id}`}
-                  />
-                }
-              />
-            ))
+            list.map((item) => {
+              const isRent = item.renter.length !== 0;
+              const label = isRent
+                ? `${item.rare}${item.name} (${item.renter} さんが借りています)`
+                : `${item.rare}${item.name} (${item.owner})`;
+              return (
+                <FormControlLabel
+                  key={label}
+                  label={label}
+                  control={
+                    <Checkbox
+                      disabled={isRent}
+                      onChange={onClickItemCheckbox}
+                      name={`${item.id}`}
+                    />
+                  }
+                />
+              );
+            })
           )}
         </Article>
       </FormGroup>
