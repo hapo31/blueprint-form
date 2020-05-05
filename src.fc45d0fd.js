@@ -81758,7 +81758,7 @@ exports.default = function () {
 
           case 2:
             json = _a.sent();
-            console.log(json);
+            setList([]);
             return [2
             /*return*/
             ];
@@ -81782,10 +81782,13 @@ exports.default = function () {
   })), react_1.default.createElement(Article_1.default, {
     title: "\u501F\u308A\u305F\u3044\u8A2D\u8A08\u56F3\u3092\u9078\u3093\u3067\u306D"
   }, list.length === 0 ? react_1.default.createElement(Spinner_1.default, null) : list.map(function (item) {
+    var isRent = item.renter.length !== 0;
+    var label = isRent ? "" + item.rare + item.name + " (" + item.renter + " \u3055\u3093\u304C\u501F\u308A\u3066\u3044\u307E\u3059)" : "" + item.rare + item.name + " (" + item.owner + ")";
     return react_1.default.createElement(core_1.FormControlLabel, {
-      key: "" + item.rare + item.name + " (" + item.owner + ")",
-      label: "" + item.rare + item.name + " (" + item.owner + ")",
+      key: label,
+      label: label,
       control: react_1.default.createElement(core_1.Checkbox, {
+        disabled: isRent,
         onChange: onClickItemCheckbox,
         name: "" + item.id
       })
@@ -81881,7 +81884,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42537" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40627" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
