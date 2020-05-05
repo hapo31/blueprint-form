@@ -22,6 +22,8 @@ export default () => {
     name: "",
   });
 
+  const [isFetching, setIsFetching] = useState<boolean>(true);
+
   const [isValid, setIsValid] = useState<boolean>(false);
 
   useEffect(() => {
@@ -30,7 +32,10 @@ export default () => {
         mode: "cors",
       })
         .then((res) => res.json())
-        .then((json) => setList(json));
+        .then((json) => {
+          setIsFetching(false);
+          setList(json);
+        });
     }
 
     setIsValid(validate());
@@ -64,6 +69,7 @@ export default () => {
   };
 
   const onClickSubmit = async () => {
+    setIsFetching(true);
     const res = await fetch(api.list, {
       mode: "cors",
       method: "POST",
@@ -72,6 +78,11 @@ export default () => {
     const json = await res.json();
 
     setList([]);
+    setFormData({
+      blueprints: [],
+      name: formData.name,
+    });
+    setIsValid(validate());
   };
 
   return (
@@ -116,8 +127,8 @@ export default () => {
       <Fab
         variant="extended"
         style={{ position: "fixed", right: "5px", bottom: "5px" }}
-        color={isValid ? "primary" : "default"}
-        disabled={!isValid}
+        color="primary"
+        disabled={isFetching || !isValid}
         onClick={onClickSubmit}
       >
         借りる
