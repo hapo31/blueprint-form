@@ -959,4 +959,4 @@ module.exports={list:"https://script.google.com/macros/s/AKfycbwc0arZ-ox4_K2mi9B
 },{"react":"HdMw","./Header/Header":"vFUC","./Body/Body":"OwZT","./Root.css":"iARL"}],"OGgv":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0});var t=e(require("react")),r=e(require("react-dom")),u=e(require("./Container/Root"));r.default.render(t.default.createElement(u.default,null),document.getElementById("app"));
 },{"react":"HdMw","react-dom":"X9zx","./Container/Root":"ivnL"}]},{},["OGgv"], null)
-//# sourceMappingURL=/src.352e4c50.js.map
+//# sourceMappingURL=/blueprint-form/src.352e4c50.js.map
