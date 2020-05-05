@@ -3,6 +3,6 @@ import { AppBar, Typography } from "@material-ui/core";
 
 export default () => (
   <AppBar position="static">
-    <Typography>貸し借り管理フォーム</Typography>
+    <Typography>COCORO_NISHINARI 設計図貸し借り管理フォーム</Typography>
   </AppBar>
 );
