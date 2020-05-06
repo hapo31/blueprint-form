@@ -5,8 +5,7 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
-  TextField,
-  Button,
+  TextField
 } from "@material-ui/core";
 
 import api from "../../../api.json";
@@ -126,7 +125,7 @@ export default () => {
 
       <Fab
         variant="extended"
-        style={{ position: "fixed", right: "5px", bottom: "5px" }}
+        style={{ position: "absolute", right: "5px", bottom: "5px" }}
         color="primary"
         disabled={isFetching || !isValid}
         onClick={onClickSubmit}
